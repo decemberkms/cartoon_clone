@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,9 +7,11 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return new MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: false,
+          elevation: 10,
           title: Text("Hello Flutter!"),
         ),
         body: Center(
