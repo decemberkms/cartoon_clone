@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xff181818),
+        backgroundColor: const Color(0xff181818),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 80.0,
               ),
               Row(
@@ -24,7 +26,7 @@ class App extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         "Hello world!",
                         style: TextStyle(
                           color: Colors.white,
@@ -43,7 +45,7 @@ class App extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 120.0,
               ),
               Text(
@@ -53,10 +55,10 @@ class App extends StatelessWidget {
                   fontSize: 22.0,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5.0,
               ),
-              Text(
+              const Text(
                 "\$5 194 482",
                 style: TextStyle(
                   color: Colors.white,
@@ -64,18 +66,18 @@ class App extends StatelessWidget {
                   fontSize: 42.0,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30.0,
               ),
               Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.amber,
+                      color: const Color.fromARGB(200, 241, 180, 59),
                       borderRadius: BorderRadius.circular(45),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
                         vertical: 20,
                         horizontal: 50,
                       ),
