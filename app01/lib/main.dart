@@ -13,7 +13,7 @@ class App extends StatelessWidget {
       home: Scaffold(
         backgroundColor: const Color(0xff181818),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -70,10 +70,11 @@ class App extends StatelessWidget {
                 height: 30.0,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(200, 241, 180, 59),
+                      color: const Color.fromARGB(221, 242, 184, 68),
                       borderRadius: BorderRadius.circular(45),
                     ),
                     child: const Padding(
@@ -84,6 +85,25 @@ class App extends StatelessWidget {
                       child: Text(
                         "Transfer",
                         style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0XFF1F2123),
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 50,
+                      ),
+                      child: Text(
+                        "Request",
+                        style: TextStyle(
+                          color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
