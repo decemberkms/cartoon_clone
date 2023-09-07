@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int totalSeconds = 1500;
   late Timer timer;
 
-  void onTick() {
+  void onTick(Timer timer) {
     setState(() {
       totalSeconds -= 1;
     });
@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
         const Duration(
           seconds: 1,
         ),
-        (timer) => onTick());
+        onTick);
   }
 
   @override
