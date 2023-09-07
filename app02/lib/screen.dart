@@ -15,11 +15,21 @@ class _MyHomePageState extends State<MyHomePage> {
   int totalSeconds = 1500;
   late Timer timer;
   bool isRunning = false;
+  int totalPomodors = 0;
 
   void onTick(Timer timer) {
-    setState(() {
-      totalSeconds -= 1;
-    });
+    if (totalSeconds == 0) {
+      setState(() {
+        totalSeconds = 1500;
+        ++totalPomodors;
+        isRunning = false;
+      });
+      timer.cancel();
+    } else {
+      setState(() {
+        totalSeconds -= 1;
+      });
+    }
   }
 
   void onStartPressed() {
@@ -102,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   .color),
                         ),
                         Text(
-                          '0',
+                          '$totalPomodors',
                           style: TextStyle(
                               fontSize: 58,
                               fontWeight: FontWeight.w600,
