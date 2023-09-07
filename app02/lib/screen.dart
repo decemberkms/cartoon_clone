@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -10,13 +12,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  List<int> numbers = [];
-  void _incrementCounter() {
+  int totalSeconds = 1500;
+  late Timer timer;
+
+  void onTick() {
     setState(() {
-      _counter = _counter + 1;
-      numbers.add(numbers.length);
+      totalSeconds -= 1;
     });
+  }
+
+  void onStartPressed() {
+    timer = Timer.periodic(
+        const Duration(
+          seconds: 1,
+        ),
+        (timer) => onTick());
   }
 
   @override
@@ -34,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '25:00',
+                '$totalSeconds',
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 89,
@@ -47,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             flex: 2,
             child: Center(
               child: IconButton(
-                onPressed: () {},
+                onPressed: onStartPressed,
                 icon: const Icon(Icons.play_circle_outline),
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
@@ -60,8 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: Container(
-                    decoration:
-                        BoxDecoration(color: Theme.of(context).cardColor),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
