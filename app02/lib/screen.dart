@@ -12,7 +12,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int totalSeconds = 1500;
+  static const mytime = 1500;
+  int totalSeconds = mytime;
   late Timer timer;
   bool isRunning = false;
   int totalPomodors = 0;
@@ -20,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void onTick(Timer timer) {
     if (totalSeconds == 0) {
       setState(() {
-        totalSeconds = 1500;
+        totalSeconds = mytime;
         ++totalPomodors;
         isRunning = false;
       });
@@ -51,6 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  String format(int seconds) {
+    var duration = Duration(seconds: seconds);
+
+    return duration.toString().split('.').first.substring(2, 7);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '$totalSeconds',
+                format(totalSeconds),
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 89,
