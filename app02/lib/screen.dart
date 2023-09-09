@@ -33,6 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void reSet() {
+    setState(() {
+      totalSeconds = mytime;
+      isRunning = false;
+    });
+    timer.cancel();
+  }
+
   void onStartPressed() {
     timer = Timer.periodic(
         const Duration(
@@ -82,16 +90,28 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 50,
+          ),
           Flexible(
             flex: 2,
             child: Center(
-              child: IconButton(
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-                icon: Icon(isRunning
-                    ? Icons.pause_circle_outline
-                    : Icons.play_circle_outline),
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: isRunning ? onPausePressed : onStartPressed,
+                    icon: Icon(isRunning
+                        ? Icons.pause_circle_outline
+                        : Icons.play_circle_outline),
+                    iconSize: 120,
+                    color: Theme.of(context).cardColor,
+                  ),
+                  IconButton(
+                    onPressed: reSet,
+                    icon: const Icon(Icons.reset_tv_rounded),
+                    color: Theme.of(context).cardColor,
+                  )
+                ],
               ),
             ),
           ),
