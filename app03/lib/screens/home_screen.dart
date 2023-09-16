@@ -47,6 +47,10 @@ class HomeScreen extends StatelessWidget {
 ListView makeList(AsyncSnapshot<List<WebToonModel>> snapshot) {
   print(snapshot.data![1].thumb);
   return ListView.separated(
+    padding: const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 10,
+    ),
     scrollDirection: Axis.horizontal,
     itemCount: snapshot.data!.length,
     separatorBuilder: (context, index) {
@@ -64,7 +68,7 @@ ListView makeList(AsyncSnapshot<List<WebToonModel>> snapshot) {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  blurRadius: 7,
+                  blurRadius: 15,
                   offset: const Offset(10, 10),
                   color: Colors.black.withOpacity(0.5),
                 ),
