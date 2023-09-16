@@ -58,7 +58,11 @@ ListView makeList(AsyncSnapshot<List<WebToonModel>> snapshot) {
       var webtoon = snapshot.data![index];
       return Column(
         children: [
-          SizedBox(
+          Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
             width: 250,
             child: Image.network(
               webtoon.thumb,
