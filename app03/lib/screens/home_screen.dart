@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(
-                  height: 200,
+                  height: 50,
                 ),
                 Expanded(
                   child: makeList(snapshot),
@@ -45,17 +45,41 @@ class HomeScreen extends StatelessWidget {
 }
 
 ListView makeList(AsyncSnapshot<List<WebToonModel>> snapshot) {
+  print(snapshot.data![1].thumb);
   return ListView.separated(
     scrollDirection: Axis.horizontal,
     itemCount: snapshot.data!.length,
     separatorBuilder: (context, index) {
       return const SizedBox(
-        width: 20,
+        width: 40,
       );
     },
     itemBuilder: (context, index) {
       var webtoon = snapshot.data![index];
-      return Text(webtoon.title);
+      return Column(
+        children: [
+          SizedBox(
+            width: 250,
+            child: Image.network(
+              webtoon.thumb,
+              headers: const {
+                'User-Agent':
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
+                'Referer': 'https://comic.naver.com',
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            webtoon.title,
+            style: const TextStyle(
+              fontSize: 22,
+            ),
+          ),
+        ],
+      );
     },
   );
 }
