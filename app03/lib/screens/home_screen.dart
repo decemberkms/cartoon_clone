@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  Future<List<WebToonModel>> webtoons = ApiService.getTodaysToons();
+  final Future<List<WebToonModel>> webtoons = ApiService.getTodaysToons();
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class HomeScreen extends StatelessWidget {
       body: FutureBuilder(
         future: webtoons,
         builder: (context, snapshot) {
-          print(snapshot.connectionState);
-          print(snapshot.error);
           if (snapshot.hasData) {
             return const Text("There is data");
           }
-          return const Text("Loading");
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
