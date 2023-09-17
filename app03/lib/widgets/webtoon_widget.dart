@@ -14,6 +14,7 @@ class WebToon extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
+            fullscreenDialog: true,
             builder: (context) =>
                 DetailedScreen(title: title, thumb: thumb, id: id),
           ),
