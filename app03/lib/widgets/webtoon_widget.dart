@@ -1,3 +1,4 @@
+import 'package:app03/screens/detailed_screen.dart';
 import 'package:flutter/material.dart';
 
 class WebToon extends StatelessWidget {
@@ -10,7 +11,13 @@ class WebToon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Tapped");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DetailedScreen(title: title, thumb: thumb, id: id),
+          ),
+        );
       },
       child: Column(
         children: [
