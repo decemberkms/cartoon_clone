@@ -1,17 +1,37 @@
+import 'package:app03/models/webtoon_detailed_model.dart';
+import 'package:app03/models/webtoon_episode_model.dart';
+import 'package:app03/services/api_service.dart';
 import 'package:flutter/material.dart';
 
-class DetailedScreen extends StatelessWidget {
+class DetailedScreen extends StatefulWidget {
   final String title, thumb, id;
 
   const DetailedScreen(
       {super.key, required this.title, required this.thumb, required this.id});
 
   @override
+  State<DetailedScreen> createState() => _DetailedScreenState();
+}
+
+class _DetailedScreenState extends State<DetailedScreen> {
+  late Future<WebToonDetailedModel> webtoon;
+  late Future<List<WebToonEpisodesModel>> episodes;
+
+  @override
+  void initState() {
+    webtoon = ApiService.getToonById(widget.id);
+    episodes = ApiService.getLatestEpisodeById(widget.id);
+    super.initState();
+    print(webtoon);
+    print(episodes);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          title,
+          widget.title,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
         ),
         elevation: 2,
@@ -27,7 +47,7 @@ class DetailedScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Hero(
-              tag: id,
+              tag: widget.id,
               child: Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
@@ -42,7 +62,7 @@ class DetailedScreen extends StatelessWidget {
                 ),
                 width: 250,
                 child: Image.network(
-                  thumb,
+                  widget.thumb,
                   headers: const {
                     'User-Agent':
                         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
