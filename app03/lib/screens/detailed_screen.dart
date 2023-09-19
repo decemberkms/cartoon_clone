@@ -40,13 +40,11 @@ class _DetailedScreenState extends State<DetailedScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
+            vertical: 25,
             horizontal: 50,
           ),
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -119,6 +117,9 @@ class _DetailedScreenState extends State<DetailedScreen> {
                       children: [
                         for (var epiosde in snapshot.data!)
                           Container(
+                            margin: const EdgeInsets.only(
+                              bottom: 10,
+                            ),
                             decoration: BoxDecoration(
                                 color: Colors.green.shade400,
                                 borderRadius: BorderRadius.circular(20)),
@@ -126,11 +127,14 @@ class _DetailedScreenState extends State<DetailedScreen> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 20),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     epiosde.title,
                                     style: const TextStyle(
                                       color: Colors.white,
+                                      fontSize: 16,
                                     ),
                                   ),
                                   const Icon(
