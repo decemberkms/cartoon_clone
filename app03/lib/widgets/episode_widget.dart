@@ -6,12 +6,15 @@ class Episode extends StatelessWidget {
   const Episode({
     super.key,
     required this.epiosde,
+    required this.webtoonID,
   });
 
+  final String webtoonID;
   final WebToonEpisodesModel epiosde;
 
   onButtonTap() async {
-    final url = Uri.parse("https://google.com");
+    final url = Uri.parse(
+        "https://comic.naver.com/webtoon/detail?titleId=$webtoonID&no=${epiosde.id}");
     await launchUrl(url);
   }
 
